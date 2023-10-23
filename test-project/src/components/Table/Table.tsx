@@ -1,4 +1,4 @@
-import React, { ReactElement, useEffect } from 'react';
+import React, { ReactElement } from 'react';
 
 import { Data } from '../../store/fetchSlice';
 import TableRow, { exampleArr } from '../TableRow/TableRow';
@@ -12,18 +12,15 @@ type TableProps = {
 const Table = (props: TableProps): ReactElement => {
   const { todos } = props;
 
-  //   const titles = Object.keys(todos[0]);
-  //   const sortedObject = preferredOrderObject(todos[0], exampleArr);
-
   return (
     <table>
-      {/* <thead className={styles.headTable}>
+      <thead className={styles.headTable}>
         <tr>
-          {titles.map((elem) => (
-            <th>{elem}</th>
+          {exampleArr.map((elem) => (
+            <th>{elem.propName}</th>
           ))}
         </tr>
-      </thead> */}
+      </thead>
       {todos.map((elem) => (
         <TableRow todo={elem} />
       ))}

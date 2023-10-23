@@ -11,35 +11,33 @@ type TableRowProps = {
   todo: Data;
 };
 
-export const exampleArr = ['completed', 'title', 'userId'];
+type exampleArrType = {
+  propName: string;
+  converter?: ((val: boolean) => string) | undefined;
+};
 
-// export function preferredOrderObject(obj: object, orderArray: string[]): object {
-//   const newObj = {};
-//   for (let i = 0; i < exampleArr.length; i += 1) {
-//     if (obj.hasOwnProperty(orderArray[i])) {
-//       newObj[orderArray[i]] = obj[orderArray[i]];
-//     }
-//   }
-//   return newObj;
-// }
+export const exampleArr: exampleArrType[] = [
+  {
+    propName: 'completed',
+    converter: (val: boolean): string => {
+      return val === true ? 'completed' : 'uncompleted';
+    },
+  },
+  { propName: 'title' },
+  { propName: 'userId' },
+];
 
 const TableRow = (props: TableRowProps): ReactElement => {
   const { todo } = props;
 
-  //   const sortedObject = preferredOrderObject(todo, exampleArr);
-
   return (
     <tbody>
       <tr className={styles.row}>
-        {Object.keys(todo).map((elem) =>
-          elem === 'completed' ? (
-            todo[elem as keyof typeof todo] === true ? (
-              <td className={styles.rowElem}>Completed</td>
-            ) : (
-              <td className={styles.rowElem}>Uncompleted</td>
-            )
+        {exampleArr.map((elem) =>
+          elem.converter ? (
+            <td className={styles.rowElem}>{elem.converter(todo.completed)}</td>
           ) : (
-            <td className={styles.rowElem}>{String(todo[elem as keyof typeof todo])}</td>
+            <td className={styles.rowElem}>{todo[elem.propName as keyof typeof todo]}</td>
           )
         )}
       </tr>
