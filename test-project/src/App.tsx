@@ -1,23 +1,21 @@
-import React, { ReactElement } from 'react';
+import React, { ReactElement, useEffect } from 'react';
+
+import { fetchTodo } from './store/fetchSlice';
+import { useAppDispatch, useAppSelector } from './store';
 
 import './App.css';
 
 const App = (): ReactElement => {
+  const dispatch = useAppDispatch();
+  useEffect(() => {
+    dispatch(fetchTodo());
+  }, []);
+
+  const todos = useAppSelector((state) => state.data);
+
   return (
     <div className="App">
-      <header className="App-header">
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <p>{JSON.stringify(todos).toString()}</p>
     </div>
   );
 };
