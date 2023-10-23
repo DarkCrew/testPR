@@ -1,21 +1,15 @@
-import React, { ReactElement, useEffect } from 'react';
+import React, { ReactElement } from 'react';
 
-import { fetchTodo } from './store/fetchSlice';
-import { useAppDispatch, useAppSelector } from './store';
+import MainPage from './pages/MainPage/MainPage';
 
 import './App.css';
+import './styles/normalize.css';
+import './styles/index.scss';
 
 const App = (): ReactElement => {
-  const dispatch = useAppDispatch();
-  useEffect(() => {
-    dispatch(fetchTodo());
-  }, []);
-
-  const todos = useAppSelector((state) => state.data);
-
   return (
     <div className="App">
-      <p>{JSON.stringify(todos).toString()}</p>
+      <MainPage />
     </div>
   );
 };

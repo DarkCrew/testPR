@@ -1,0 +1,13 @@
+@import url('../../variables/Variables.module.scss');
+
+.home {
+  background: var(--color-darkpurple);
+}
+
+.container {
+  padding: 40px 0;
+}
+
+.mainContainer {
+  display: flex;
+}

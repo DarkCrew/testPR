@@ -2,7 +2,7 @@
 import { createAsyncThunk, createSlice, PayloadAction } from '@reduxjs/toolkit';
 import axios from 'axios';
 
-type Data = { userId: number; id: number; title: string; completed: boolean };
+export type Data = { userId: number; id: number; title: string; completed: boolean };
 
 type FetchState = {
   data: Data[];

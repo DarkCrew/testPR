@@ -1,0 +1,19 @@
+@import url('../../variables/Variables.module.scss');
+
+.headTable {
+  display: flex;
+  width: 100%;
+}
+
+tr {
+  display: flex;
+  width: 100%;
+}
+
+th {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  border: 1px solid var(--color-black);
+  background: var(--color-orange);
+}
