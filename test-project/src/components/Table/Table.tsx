@@ -1,7 +1,7 @@
 import React, { ReactElement } from 'react';
 
 import { Data } from '../../store/fetchSlice';
-import TableRow, { exampleArr, preferredOrderObject } from '../TableRow/TableRow';
+import TableRow, { exampleArr } from '../TableRow/TableRow';
 
 import styles from './Table.module.scss';
 
@@ -11,13 +11,13 @@ type TableProps = {
 
 const Table = (props: TableProps): ReactElement => {
   const { todos } = props;
-  const sortedObject = preferredOrderObject(todos[0], exampleArr);
+  //   const sortedObject = preferredOrderObject(todos[0], exampleArr);
 
   return (
     <table>
       <thead className={styles.headTable}>
         <tr>
-          {Object.keys(sortedObject).map((elem) => (
+          {Object.keys(todos[0]).map((elem) => (
             <th>{elem}</th>
           ))}
         </tr>

@@ -13,35 +13,33 @@ type TableRowProps = {
 
 export const exampleArr = ['completed', 'title', 'userId'];
 
-export function preferredOrderObject(obj: object, orderArray: string[]): object {
-  const newObj = {};
-  for (let i = 0; i < exampleArr.length; i += 1) {
-    if (obj.hasOwnProperty(orderArray[i])) {
-      newObj[orderArray[i]] = obj[orderArray[i]];
-    }
-  }
-  return newObj;
-}
+// export function preferredOrderObject(obj: object, orderArray: string[]): object {
+//   const newObj = {};
+//   for (let i = 0; i < exampleArr.length; i += 1) {
+//     if (obj.hasOwnProperty(orderArray[i])) {
+//       newObj[orderArray[i]] = obj[orderArray[i]];
+//     }
+//   }
+//   return newObj;
+// }
 
 const TableRow = (props: TableRowProps): ReactElement => {
   const { todo } = props;
 
-  const sortedObject = preferredOrderObject(todo, exampleArr);
+  //   const sortedObject = preferredOrderObject(todo, exampleArr);
 
   return (
     <tbody>
       <tr className={styles.row}>
-        {Object.keys(sortedObject).map((elem) =>
+        {Object.keys(todo).map((elem) =>
           elem === 'completed' ? (
-            sortedObject[elem as keyof typeof sortedObject] === true ? (
+            todo[elem as keyof typeof todo] === true ? (
               <td className={styles.rowElem}>Completed</td>
             ) : (
               <td className={styles.rowElem}>Uncompleted</td>
             )
           ) : (
-            <td className={styles.rowElem}>
-              {String(sortedObject[elem as keyof typeof sortedObject])}
-            </td>
+            <td className={styles.rowElem}>{String(todo[elem as keyof typeof todo])}</td>
           )
         )}
       </tr>
